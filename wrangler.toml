@@ -1,0 +1,4 @@
+# wrangler.toml  (minimal Pages config)
+name = "kelly-site"
+pages_build_output_dir = "."          # Exported files live in repo root
+compatibility_date = "2025-06-30"
