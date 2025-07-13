@@ -69,11 +69,11 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .resume-btn {
-    background-color: #3498db;
+    background-color: #e74c3c;
     color: white !important;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -81,7 +81,7 @@ body {
 }
 
 .resume-btn:hover {
-    background-color: #2980b9;
+    background-color: #c0392b;
 }
 
 .hamburger {
@@ -100,7 +100,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
     color: white;
     padding: 120px 0 80px;
     margin-top: 80px;
@@ -123,7 +123,7 @@ body {
 }
 
 .highlight {
-    color: #5dade2;
+    color: #f39c12;
 }
 
 .hero-subtitle {
@@ -154,7 +154,7 @@ body {
     display: block;
     font-size: 2.5rem;
     font-weight: bold;
-    color: #5dade2;
+    color: #f39c12;
     margin-bottom: 0.5rem;
 }
 
@@ -212,12 +212,12 @@ body {
 }
 
 .btn-primary {
-    background-color: #3498db;
+    background-color: #f39c12;
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
+    background-color: #e67e22;
     transform: translateY(-2px);
 }
 
@@ -229,17 +229,17 @@ body {
 
 .btn-secondary:hover {
     background-color: white;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .btn-outline {
     background-color: transparent;
-    color: #3498db;
-    border: 2px solid #3498db;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
 }
 
 .btn-outline:hover {
-    background-color: #3498db;
+    background-color: #e74c3c;
     color: white;
 }
 
@@ -310,7 +310,7 @@ body {
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #e74c3c;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
@@ -333,7 +333,7 @@ body {
 
 .achievement-type {
     display: inline-block;
-    background-color: #3498db;
+    background-color: #e74c3c;
     color: white;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -395,7 +395,7 @@ body {
 
 .record-category i {
     margin-right: 1rem;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .record-list {
@@ -422,7 +422,7 @@ body {
 .time {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .date {
@@ -455,7 +455,7 @@ body {
     top: 0;
     bottom: 0;
     width: 3px;
-    background-color: #3498db;
+    background-color: #e74c3c;
 }
 
 .timeline-item {
@@ -471,14 +471,14 @@ body {
     top: 0;
     width: 16px;
     height: 16px;
-    background-color: #3498db;
+    background-color: #e74c3c;
     border-radius: 50%;
 }
 
 .timeline-date {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
     margin-bottom: 0.5rem;
 }
 
@@ -498,19 +498,19 @@ body {
 }
 
 .award-type.championship {
-    background-color: #3498db;
+    background-color: #f39c12;
 }
 
 .award-type.qualifier {
-    background-color: #5dade2;
+    background-color: #3498db;
 }
 
 .award-type.recognition {
-    background-color: #2980b9;
+    background-color: #2ecc71;
 }
 
 .award-type.leadership {
-    background-color: #1f4e79;
+    background-color: #9b59b6;
 }
 
 /* Progress Charts */
@@ -556,7 +556,7 @@ body {
 
 .chart-bar {
     width: 60px;
-    background-color: #3498db;
+    background-color: #e74c3c;
     border-radius: 5px 5px 0 0;
     display: flex;
     flex-direction: column;
@@ -597,7 +597,7 @@ body {
 
 .card-icon {
     font-size: 3rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-bottom: 1rem;
 }
 
@@ -658,7 +658,7 @@ body {
 
 .course-grade {
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 /* Test Scores */
@@ -716,7 +716,7 @@ body {
 .score-value {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 /* Academic Interests */
@@ -747,7 +747,7 @@ body {
 
 .interest-card i {
     font-size: 3rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-bottom: 1rem;
 }
 
@@ -782,12 +782,12 @@ body {
     background-color: #f8f9fa;
     padding: 2rem;
     border-radius: 10px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #e74c3c;
 }
 
 .award-icon {
     font-size: 2rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-right: 2rem;
 }
 
@@ -799,7 +799,7 @@ body {
 
 .award-year {
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 /* Gallery */
@@ -827,7 +827,7 @@ body {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background-color: #3498db;
+    background-color: #e74c3c;
     color: white;
 }
 
@@ -860,7 +860,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: #3498db;
+    color: #e74c3c;
     position: relative;
     overflow: hidden;
 }
@@ -924,7 +924,7 @@ body {
 
 .notice-content i {
     font-size: 3rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-bottom: 1rem;
 }
 
@@ -964,7 +964,7 @@ body {
 
 .contact-method i {
     font-size: 2rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-right: 1.5rem;
 }
 
@@ -1041,7 +1041,7 @@ body {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #e74c3c;
 }
 
 .checkbox-group {
@@ -1082,7 +1082,7 @@ body {
 
 .timeline-icon {
     font-size: 3rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-bottom: 1rem;
 }
 
@@ -1119,7 +1119,7 @@ body {
 
 .resource-card i {
     font-size: 3rem;
-    color: #3498db;
+    color: #e74c3c;
     margin-bottom: 1rem;
 }
 
@@ -1166,7 +1166,7 @@ body {
     gap: 2rem;
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid #e74c3c;
 }
 
 .athlete-info h1 {
@@ -1178,13 +1178,12 @@ body {
 .athlete-info h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .contact-info {
     display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
+    gap: 2rem;flex-wrap: wrap;
 }
 
 .contact-info span {
@@ -1252,7 +1251,7 @@ body {
 
 .stat-value {
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .profile-summary {
@@ -1283,7 +1282,7 @@ body {
 
 .award-year {
     font-weight: bold;
-    color: #3498db;
+    color: #e74c3c;
     font-size: 1.1rem;
 }
 
@@ -1402,7 +1401,7 @@ body {
 }
 
 .footer-section a:hover {
-    color: #3498db;
+    color: #e74c3c;
 }
 
 .footer-section p {
