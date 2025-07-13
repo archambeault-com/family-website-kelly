@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Kelly Athletics</title>
+    <meta name="description" content="Contact Kelly for college recruitment and athletic opportunities">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Kelly Athletics" class="logo">
+                <span>Kelly Athletics</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                <li><a href="academics.html" class="nav-link">Academics</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="resume.html" class="nav-link resume-btn">Resume</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Information</h1>
+            <p>Ready to discuss collegiate opportunities in cross country and track</p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>I'm excited to hear from college coaches and recruiters. Please reach out to discuss how I can contribute to your program.</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div class="method-info">
+                                <h3>Email</h3>
+                                <p>kelly.athletics@email.com</p>
+                                <span>Primary contact method</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div class="method-info">
+                                <h3>Phone</h3>
+                                <p>Available upon request</p>
+                                <span>For serious inquiries</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="method-info">
+                                <h3>Location</h3>
+                                <p>Available for visits</p>
+                                <span>Campus visits welcomed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-stats">
+                        <h3>Quick Reference</h3>
+                        <ul>
+                            <li>5K PR: 17:30</li>
+                            <li>1500m PR: 3:45</li>
+                            <li>GPA: 3.8</li>
+                            <li>Graduation: 2025</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h2>Send a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school">School/Organization</label>
+                            <input type="text" id="school" name="school">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position">Position/Title</label>
+                            <input type="text" id="position" name="position" placeholder="e.g., Head Coach, Recruiter">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interest">Area of Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select...</option>
+                                <option value="cross-country">Cross Country</option>
+                                <option value="track">Track & Field</option>
+                                <option value="both">Both Sports</option>
+                                <option value="academic">Academic Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Please share details about your program and recruiting timeline..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="resume" name="resume">
+                            <label for="resume">Please send me Kelly's complete athletic resume</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruiting Timeline -->
+    <section class="recruiting-timeline">
+        <div class="container">
+            <h2>Recruiting Timeline</h2>
+            <div class="timeline-grid">
+                <div class="timeline-card">
+                    <div class="timeline-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Currently</h3>
+                    <p>Actively seeking collegiate opportunities for Fall 2025</p>
+                </div>
+                <div class="timeline-card">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Graduation</h3>
+                    <p>High School graduation: Spring 2025</p>
+                </div>
+                <div class="timeline-card">
+                    <div class="timeline-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Eligibility</h3>
+                    <p>NCAA eligible for immediate competition</p>
+                </div>
+                <div class="timeline-card">
+                    <div class="timeline-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Visits</h3>
+                    <p>Available for official and unofficial visits</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coach Resources -->
+    <section class="coach-resources">
+        <div class="container">
+            <h2>Resources for Coaches</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Athletic Resume</h3>
+                    <p>Complete athletic and academic profile</p>
+                    <a href="resume.html" class="btn btn-outline">View Resume</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Performance Data</h3>
+                    <p>Detailed race results and progression</p>
+                    <a href="achievements.html" class="btn btn-outline">View Stats</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-images"></i>
+                    <h3>Photo Gallery</h3>
+                    <p>Competition and training photos</p>
+                    <a href="gallery.html" class="btn btn-outline">View Gallery</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Highlights</h3>
+                    <p>Race footage available upon request</p>
+                    <a href="#" class="btn btn-outline">Request Video</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Kelly Athletics</h4>
+                    <p>Dedicated to excellence in cross country and track athletics</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> kelly.athletics@email.com</p>
+                    <p><i class="fas fa-phone"></i> Available upon request</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kelly Athletics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

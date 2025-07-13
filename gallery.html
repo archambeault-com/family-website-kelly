@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Kelly Athletics</title>
+    <meta name="description" content="Athletic photos and competition moments from Kelly's cross country and track career">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Kelly Athletics" class="logo">
+                <span>Kelly Athletics</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                <li><a href="academics.html" class="nav-link">Academics</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="resume.html" class="nav-link resume-btn">Resume</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Photo Gallery</h1>
+            <p>Capturing moments from competitions, training, and team events</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="competition">Competition</button>
+                <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="team">Team Events</button>
+                <button class="filter-btn" data-filter="awards">Awards</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="photo-gallery">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Competition Photos -->
+                <div class="gallery-item" data-category="competition">
+                    <div class="photo-container">
+                        <img src="img/competition1.jpg" alt="Regional Championship" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Regional Championship</h3>
+                            <p>Cross Country 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="competition">
+                    <div class="photo-container">
+                        <img src="img/competition2.jpg" alt="State Track Meet" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>State Track Meet</h3>
+                            <p>1500m Final</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="competition">
+                    <div class="photo-container">
+                        <img src="img/competition3.jpg" alt="Conference Championships" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Conference Championships</h3>
+                            <p>Personal Record</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Photos -->
+                <div class="gallery-item" data-category="training">
+                    <div class="photo-container">
+                        <img src="img/training1.jpg" alt="Strength Training" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Strength Training</h3>
+                            <p>Off-season preparation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="training">
+                    <div class="photo-container">
+                        <img src="img/training2.jpg" alt="Trail Running" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Trail Running</h3>
+                            <p>Endurance building</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="training">
+                    <div class="photo-container">
+                        <img src="img/training3.jpg" alt="Track Workout" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Track Workout</h3>
+                            <p>Speed development</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Events -->
+                <div class="gallery-item" data-category="team">
+                    <div class="photo-container">
+                        <img src="img/team1.jpg" alt="Team Bonding" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Team Bonding</h3>
+                            <p>Pre-season camp</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="team">
+                    <div class="photo-container">
+                        <img src="img/team2.jpg" alt="Team Captain" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Team Captain</h3>
+                            <p>Leadership role</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="team">
+                    <div class="photo-container">
+                        <img src="img/team3.jpg" alt="Senior Night" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Senior Night</h3>
+                            <p>Team celebration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards Photos -->
+                <div class="gallery-item" data-category="awards">
+                    <div class="photo-container">
+                        <img src="img/awards1.jpg" alt="Regional Medal" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Regional Medal</h3>
+                            <p>1st Place Cross Country</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="awards">
+                    <div class="photo-container">
+                        <img src="img/awards2.jpg" alt="All-Conference" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>All-Conference</h3>
+                            <p>Recognition ceremony</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="awards">
+                    <div class="photo-container">
+                        <img src="img/awards3.jpg" alt="Academic Achievement" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <h3>Academic Achievement</h3>
+                            <p>Student-Athlete Award</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Upload Notice -->
+    <section class="upload-notice">
+        <div class="container">
+            <div class="notice-content">
+                <i class="fas fa-info-circle"></i>
+                <h3>Photo Collection</h3>
+                <p>This gallery represents a selection of competition and training photos. Additional photos and video highlights are available upon request for recruiting purposes.</p>
+                <a href="contact.html" class="btn btn-primary">Request Additional Media</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Kelly Athletics</h4>
+                    <p>Dedicated to excellence in cross country and track athletics</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> kelly.athletics@email.com</p>
+                    <p><i class="fas fa-phone"></i> Available upon request</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kelly Athletics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
