@@ -2,9 +2,10 @@ modules = ["nodejs-20", "python-3.11"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["run"]
 
 [workflows]
-runButton = "Project"
+runButton = "Athletic Portfolio Server"
 
 [[workflows.workflow]]
 name = "Project"
