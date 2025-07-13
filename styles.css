@@ -1428,6 +1428,12 @@ body {
     }
 }
 
+/* Component placeholders */
+#header-placeholder,
+#footer-placeholder {
+    display: block;
+}
+
 /* Print Styles */
 @media print {
     body {
