@@ -281,6 +281,15 @@ body {
     margin-bottom: 1rem;
 }
 
+.stat-card-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .stat-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
