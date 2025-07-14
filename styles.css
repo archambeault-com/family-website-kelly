@@ -108,7 +108,7 @@ body {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
     max-width: 1200px;
@@ -173,7 +173,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-width: 300px;
     max-width: 500px;
 }
 
