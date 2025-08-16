@@ -73,16 +73,28 @@ function setActiveNavLink() {
 
 function markActiveNavLink() {
   const links = document.querySelectorAll('.nav-link');
-  const currentPath = window.location.pathname.replace(/\/$/, ''); // remove trailing slash
-  const currentFile = currentPath.split('/').pop() || 'index.html';
+
+  // get current file name (no trailing slash), then strip extension
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  let currentFile = currentPath.split('/').pop() || '';
+  currentFile = currentFile.replace(/\.[^/.]+$/, '') || 'index';
 
   links.forEach(a => {
-    // get href file portion (handle absolute and relative)
     const href = a.getAttribute('href') || '';
-    const hrefPath = href.split('?')[0].replace(/\/$/, '');
-    const hrefFile = hrefPath.split('/').pop() || 'index.html';
 
-    if (hrefFile === currentFile || (href === '' && currentFile === 'index.html')) {
+    // resolve the href relative to current location to get a proper pathname
+    let hrefFile = '';
+    try {
+      const resolved = new URL(href, window.location.href);
+      hrefFile = resolved.pathname.replace(/\/$/, '').split('/').pop() || '';
+    } catch (e) {
+      // fallback for malformed hrefs
+      hrefFile = href.replace(/\/$/, '').split('/').pop() || '';
+    }
+
+    hrefFile = hrefFile.replace(/\.[^/.]+$/, '') || 'index';
+
+    if (hrefFile === currentFile) {
       a.classList.add('active');
     } else {
       a.classList.remove('active');
@@ -122,6 +134,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.addEventListener('click', function() {
                     navMenu.classList.remove('active');
                     hamburger.classList.remove('active');
+
+                    // Immediately mark the clicked link as active so there's no visual flash
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
                 });
             });
         }
