@@ -46,7 +46,7 @@ function createFooter() {
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p><i class="fas fa-envelope"></i> kellbellarchambeault@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> kelly.archambeault.running@gmail.com</p>
                     <p><i class="fas fa-phone"></i> Available upon request</p>
                 </div>
             </div>
