@@ -6,7 +6,7 @@
     <title>Kelly - Cross Country & Track Athlete | Athletic Portfolio</title>
     <meta name="description" content="Kelly's athletic portfolio cross country and track achievements and academics for college recruitment">
     <meta name="keywords" content="Kelly, cross country, track, athlete, college recruitment, running, athletics">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -14,10 +14,10 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
+    <section class="page-header">
+        <div class="container">
             <div class="hero-text">
-                <h1>Kelly <span class="highlight">Archambeault</span></h1>
+                <h1>Kelly Archambeault</h1>
                 <p class="hero-subtitle">Cross Country & Track Athlete Class of 2027</p>
                 <p class="hero-description">Dedicated distance runner with proven track record of excellence in cross country and track events. Committed to academic and athletic achievement at the collegiate level.</p>
                 <div class="hero-stats">
@@ -39,9 +39,22 @@
                     <a href="resume.html" class="btn btn-secondary">View Resume</a>
                 </div>
             </div>
+
             <div class="hero-image">
-                <img src="imgs/klaweb45.jpeg" alt="Kelly Archambeault" class="athlete-photo">
-            </div>
+                <picture>
+                    <!-- WebP preferred sources (browser picks best size/format) -->
+                    <source type="image/webp"
+                            srcset="imgs/runner-480w.webp 480w, imgs/runner-800w.webp 800w, imgs/runner-1200w.webp 1200w"
+                            sizes="(max-width:600px) 90vw, (min-width:900px) 40vw, 50vw">
+                    <!-- JPEG fallback and consumer of srcset/sizes -->
+                    <img src="imgs/klaweb45.jpeg"
+                         srcset="imgs/runner-480w.jpg 480w, imgs/runner-800w.jpg 800w, imgs/runner-1200w.jpg 1200w"
+                         sizes="(max-width:600px) 90vw, (min-width:900px) 40vw, 50vw"
+                         alt="Kelly Archambeault"
+                         class="athlete-photo">
+                </picture>
+             </div>
+
         </div>
     </section>
 
@@ -51,24 +64,20 @@
             <h2>At a Glance</h2>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <img src=>
                     <h3>All State Metalist</h3>
                     <p>4x800: 2nd, 
                        800: 6th,
                        4x400: 7th (school record)</p>
                 </div>
                 <div class="stat-card">
-                    <img ">
                     <h3>State Qualifier</h3>
                     <p>800m, 1600m, 4x400r, 4x800r, & 5k</p>
                 </div>
                 <div class="stat-card">
-                    <img >
                     <h3>Honor Roll</h3>
                     <p>4.2 GPA</p>
                 </div>
                 <div class="stat-card">
-                    <img >
                     <h3>Team Captain</h3>
                     <p>Cross Country, Track, & Basketball</p>
                 </div>

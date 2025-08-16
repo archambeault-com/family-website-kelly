@@ -16,6 +16,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    /* keep .container neutral so sections opt into layout (do NOT set display:flex here) */
 }
 
 /* Navigation */
@@ -24,8 +25,10 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
+    left: 0;             /* ensure full-bleed fixed bar */
+    right: 0;            /* ensure full-bleed fixed bar */
     width: 100%;
-    z-index: 1000;
+    z-index: 1100;       /* above other page content */
 }
 
 .nav-container {
@@ -116,6 +119,11 @@ body {
     padding: 0 20px;
 }
 
+.hero-text {
+    width: 100%;
+    text-align: center;
+}
+
 .hero-text h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -172,6 +180,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 420px; /* limits very large images on phones */
 }
 
 .athlete-placeholder {
@@ -187,10 +197,12 @@ body {
 }
 
 .athlete-photo {
-    width: 300px;
-    height: 400px;
+    display: block;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: cover;        /* crop nicely when constrained */
+    aspect-ratio: 4 / 5;      /* keep a consistent portrait shape on most devices */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
@@ -252,18 +264,51 @@ body {
     color: #2c3e50;
 }
 
+/* keep quick-stats heading centered and make section ignore global .container flex */
+.quick-stats .container {
+  display: block; /* undo global .container flex for this section */
+  text-align: center;
+  padding: 0 20px;
+}
+
+.quick-stats h2 {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 3rem; /* center and preserve spacing under the heading */
+}
+
+/* center the grid and constrain width so cards sit under the H2 on wide screens */
+.quick-stats .stats-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 700px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .stat-card {
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease;
+  background: var(--card-bg, #fff);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .stat-card:hover {
@@ -559,16 +604,19 @@ body {
     justify-content: space-between;
     align-items: center;
     color: white;
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .bar-label {
     margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: white;
 }
 
 .bar-date {
     font-size: 0.8rem;
-    color: #2c3e50;
+    font-weight: bold;
+    color: white;
     margin-top: 0.5rem;
 }
 
@@ -1242,8 +1290,8 @@ body {
 }
 
 .stat-label {
-    font-weight: 500;
-    color: #2c3e50;
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
 .stat-value {
@@ -1618,4 +1666,78 @@ body {
     .overview-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Hero layout: stack on small screens, side-by-side on large
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+ */
+/* Text block */
+.hero-text {
+  width: 100%;
+  text-align: center;
+}
+
+/* Image container & image */
+.hero-image {
+  width: 100%;
+  max-width: 420px; /* limits very large images on phones */
+}
+.athlete-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;        /* crop nicely when constrained */
+  aspect-ratio: 4 / 5;      /* keep a consistent portrait shape on most devices */
+}
+
+/* Larger screens: row layout, image on the right
+   — scope this to the page header only (do not change global .container) */
+@media (min-width: 900px) {
+  .page-header .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+  }
+  .hero-text {
+    flex: 1 1 55%;
+    text-align: left;
+  }
+  .hero-image {
+    flex: 0 0 40%;
+    max-width: 520px;
+  }
+  .athlete-photo {
+    aspect-ratio: auto;
+    max-height: 520px;
+  }
+}
+
+/* Small tweaks for small phones */
+@media (max-width: 420px) {
+  .athlete-photo {
+    border-radius: 8px;
+    max-width: 360px;
+  }
+}
+
+/* === Hero: scope flex only to the header section (don't use global .container) === */
+.page-header .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .page-header .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
