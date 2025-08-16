@@ -49,8 +49,17 @@ body {
 }
 
 .logo {
-    height: 40px;
-    margin-right: 10px;
+  /* Preferred: let the browser pick a size between 40px and 65px */
+  height: clamp(40px, 4.5vw, 75px);
+  margin-right: 10px;
+}
+
+/* Optional fallback / explicit control via media queries */
+@media (min-width: 1200px) {
+  .logo { height: 75px; }
+}
+@media (max-width: 480px) {
+  .logo { height: 40px; }
 }
 
 .nav-menu {
@@ -589,14 +598,15 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: end;
-    height: 200px;
+    height: 275px;
     background-color: white;
     border-radius: 5px;
     padding: 1rem;
 }
 
 .chart-bar {
-    width: 60px;
+    width: auto;
+    padding: 0.35rem 0.5rem;
     background-color: #e74c3c;
     border-radius: 5px 5px 0 0;
     display: flex;
@@ -1688,12 +1698,8 @@ body {
   max-width: 420px; /* limits very large images on phones */
 }
 .athlete-photo {
-  display: block;
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;        /* crop nicely when constrained */
-  aspect-ratio: 4 / 5;      /* keep a consistent portrait shape on most devices */
+  max-width: 420px;
 }
 
 /* Larger screens: row layout, image on the right
@@ -1714,8 +1720,8 @@ body {
     max-width: 520px;
   }
   .athlete-photo {
-    aspect-ratio: auto;
-    max-height: 520px;
+    flex: 0 0 40%;
+    max-width: 520px;
   }
 }
 

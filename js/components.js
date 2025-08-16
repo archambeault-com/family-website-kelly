@@ -1,4 +1,3 @@
-
 // Shared Header Component
 function createHeader() {
     return `
@@ -72,13 +71,41 @@ function setActiveNavLink() {
     });
 }
 
+function markActiveNavLink() {
+  const links = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname.replace(/\/$/, ''); // remove trailing slash
+  const currentFile = currentPath.split('/').pop() || 'index.html';
+
+  links.forEach(a => {
+    // get href file portion (handle absolute and relative)
+    const href = a.getAttribute('href') || '';
+    const hrefPath = href.split('?')[0].replace(/\/$/, '');
+    const hrefFile = hrefPath.split('/').pop() || 'index.html';
+
+    if (hrefFile === currentFile || (href === '' && currentFile === 'index.html')) {
+      a.classList.add('active');
+    } else {
+      a.classList.remove('active');
+    }
+  });
+}
+
 // Initialize header and footer when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Insert header
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (headerPlaceholder) {
         headerPlaceholder.innerHTML = createHeader();
+
+        // remove site name text on the home page only
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        if (currentPage === 'index.html') {
+            const logoSpan = headerPlaceholder.querySelector('.nav-logo span');
+            if (logoSpan) logoSpan.remove();
+        }
+
         setActiveNavLink();
+        markActiveNavLink();
         
         // Initialize hamburger menu functionality after header is inserted
         const hamburger = document.querySelector('.hamburger');

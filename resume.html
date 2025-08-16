@@ -42,9 +42,18 @@
                             <span><i class="fas fa-graduation-cap"></i> Graduating 2027</span>
                         </div>
                     </div>
-                    <div class="athlete-photo">
-                        <img src="imgs/kelly-headshot.jpg" alt="Kelly Portrait" class="headshot-photo">
-                    </div>
+                <div class="athlete-photo">
+                    <picture>
+                        <source type="image/webp"
+                                srcset="imgs/resume-headshot-480w.webp 480w, imgs/resume-headshot-800w.webp 800w, imgs/resume-headshot-1200w.webp 1200w"
+                                sizes="(max-width:600px) 30vw, (min-width:900px) 150px, 20vw">
+                        <img src="imgs/kelly-headshot.jpg"
+                             srcset="imgs/resume-headshot-480w.jpg 480w, imgs/resume-headshot-800w.jpg 800w, imgs/resume-headshot-1200w.jpg 1200w"
+                             sizes="(max-width:600px) 30vw, (min-width:900px) 150px, 20vw"
+                             alt="Kelly Portrait"
+                             class="headshot-photo">
+                    </picture>
+                 </div>
                 </div>
 
                 <!-- Athletic Profile -->
