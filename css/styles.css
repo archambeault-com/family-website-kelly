@@ -193,6 +193,15 @@ body {
     max-width: 420px; /* limits very large images on phones */
 }
 
+.hero-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
 .athlete-placeholder {
     width: 300px;
     height: 400px;
@@ -1692,18 +1701,24 @@ body {
   text-align: center;
 }
 
-/* Image container & image */
+/* Image container & image - mobile first approach */
 .hero-image {
   width: 100%;
-  max-width: 420px; /* limits very large images on phones */
-}
-.athlete-photo {
-  width: 100%;
-  max-width: 420px;
+  max-width: 380px; /* slightly smaller for better mobile display */
+  margin: 0 auto;
 }
 
-/* Larger screens: row layout, image on the right
-   — scope this to the page header only (do not change global .container) */
+.athlete-photo {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 3 / 4; /* consistent portrait shape */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Larger screens: row layout, image on the right */
 @media (min-width: 900px) {
   .page-header .container {
     flex-direction: row;
@@ -1717,19 +1732,21 @@ body {
   }
   .hero-image {
     flex: 0 0 40%;
-    max-width: 520px;
+    max-width: 450px;
+    margin: 0;
   }
   .athlete-photo {
-    flex: 0 0 40%;
-    max-width: 520px;
+    max-width: 100%;
   }
 }
 
 /* Small tweaks for small phones */
 @media (max-width: 420px) {
+  .hero-image {
+    max-width: 320px;
+  }
   .athlete-photo {
     border-radius: 8px;
-    max-width: 360px;
   }
 }
 
