@@ -74,13 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }
         
-        // Content filtering for spam detection
+        // Content filtering for spam detection (relaxed)
         function detectSpam(formData) {
             const spamKeywords = [
-                'bitcoin', 'cryptocurrency', 'investment', 'loan', 'casino',
-                'viagra', 'pharmacy', 'weight loss', 'make money', 'click here',
-                'limited time', 'act now', 'congratulations', 'winner',
-                'http://', 'https://', 'www.', '.com', '.net', '.org'
+                'bitcoin', 'cryptocurrency', 'casino', 'viagra', 'pharmacy',
+                'click here now', 'limited time offer', 'congratulations you won'
             ];
             
             const textToCheck = `${formData.get('message')} ${formData.get('name')} ${formData.get('organization')}`.toLowerCase();
@@ -91,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Check for excessive repetition
+            // Check for excessive repetition (more lenient)
             const words = textToCheck.split(' ');
             const wordCount = {};
             for (const word of words) {
-                if (word.length > 3) {
+                if (word.length > 4) {
                     wordCount[word] = (wordCount[word] || 0) + 1;
-                    if (wordCount[word] > 5) {
+                    if (wordCount[word] > 8) {
                         return 'Message contains excessive repetition.';
                     }
                 }
@@ -106,11 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }
         
-        // Check minimum time spent on form (bot detection)
+        // Check minimum time spent on form (bot detection - relaxed)
         function checkFormInteraction() {
             const timestamp = timestampField ? parseInt(timestampField.value) : Date.now();
             const timeSpent = Date.now() - timestamp;
-            const minimumTime = 10000; // 10 seconds minimum
+            const minimumTime = 3000; // 3 seconds minimum (reduced from 10)
             
             if (timeSpent < minimumTime) {
                 return 'Please take more time to fill out the form properly.';
