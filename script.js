@@ -33,45 +33,255 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Contact Form Handling
+    // Enhanced Contact Form Handling with Anti-Abuse Protection
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
+        const formMessages = document.getElementById('form-messages');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+        const messageTextarea = document.getElementById('message');
+        const timestampField = document.getElementById('timestamp');
+        
+        // Set timestamp when form loads
+        if (timestampField) {
+            timestampField.value = Date.now();
+        }
+        
+        // Character counter for message field
+        if (messageTextarea) {
+            const charCounter = messageTextarea.parentNode.querySelector('.char-counter');
+            messageTextarea.addEventListener('input', function() {
+                const count = this.value.length;
+                if (charCounter) {
+                    charCounter.textContent = `${count}/2000 characters`;
+                    charCounter.style.color = count > 1800 ? '#e74c3c' : '#666';
+                }
+            });
+        }
+        
+        // Rate limiting - check localStorage for recent submissions
+        function checkRateLimit() {
+            const lastSubmission = localStorage.getItem('lastContactSubmission');
+            if (lastSubmission) {
+                const timeSince = Date.now() - parseInt(lastSubmission);
+                const cooldownPeriod = 5 * 60 * 1000; // 5 minutes
+                
+                if (timeSince < cooldownPeriod) {
+                    const remainingTime = Math.ceil((cooldownPeriod - timeSince) / 60000);
+                    return `Please wait ${remainingTime} minute(s) before submitting another message.`;
+                }
             }
-
-            // Simple validation
-            if (!data.name || !data.email || !data.message) {
-                alert('Please fill in all required fields.');
-                return;
+            return null;
+        }
+        
+        // Content filtering for spam detection
+        function detectSpam(formData) {
+            const spamKeywords = [
+                'bitcoin', 'cryptocurrency', 'investment', 'loan', 'casino',
+                'viagra', 'pharmacy', 'weight loss', 'make money', 'click here',
+                'limited time', 'act now', 'congratulations', 'winner',
+                'http://', 'https://', 'www.', '.com', '.net', '.org'
+            ];
+            
+            const textToCheck = `${formData.get('message')} ${formData.get('name')} ${formData.get('organization')}`.toLowerCase();
+            
+            for (const keyword of spamKeywords) {
+                if (textToCheck.includes(keyword)) {
+                    return `Message contains prohibited content. Please contact directly via email if this is a legitimate inquiry.`;
+                }
             }
-
+            
+            // Check for excessive repetition
+            const words = textToCheck.split(' ');
+            const wordCount = {};
+            for (const word of words) {
+                if (word.length > 3) {
+                    wordCount[word] = (wordCount[word] || 0) + 1;
+                    if (wordCount[word] > 5) {
+                        return 'Message contains excessive repetition.';
+                    }
+                }
+            }
+            
+            return null;
+        }
+        
+        // Check minimum time spent on form (bot detection)
+        function checkFormInteraction() {
+            const timestamp = timestampField ? parseInt(timestampField.value) : Date.now();
+            const timeSpent = Date.now() - timestamp;
+            const minimumTime = 10000; // 10 seconds minimum
+            
+            if (timeSpent < minimumTime) {
+                return 'Please take more time to fill out the form properly.';
+            }
+            return null;
+        }
+        
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearErrors);
+        });
+        
+        function validateField(e) {
+            const field = e.target;
+            const errorSpan = field.parentNode.querySelector('.error-message');
+            let isValid = true;
+            
+            // Clear previous errors
+            field.classList.remove('error');
+            if (errorSpan) errorSpan.textContent = '';
+            
+            // Required field validation
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                showFieldError(field, `${getFieldLabel(field)} is required`);
+                isValid = false;
+            }
+            
             // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                alert('Please enter a valid email address.');
+            if (field.type === 'email' && field.value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(field.value)) {
+                    showFieldError(field, 'Please enter a valid email address');
+                    isValid = false;
+                }
+            }
+            
+            // Phone validation (optional)
+            if (field.type === 'tel' && field.value) {
+                const phoneRegex = /^[\d\s\(\)\-\+]+$/;
+                if (!phoneRegex.test(field.value)) {
+                    showFieldError(field, 'Please enter a valid phone number');
+                    isValid = false;
+                }
+            }
+            
+            return isValid;
+        }
+        
+        function showFieldError(field, message) {
+            field.classList.add('error');
+            const errorSpan = field.parentNode.querySelector('.error-message');
+            if (errorSpan) errorSpan.textContent = message;
+        }
+        
+        function clearErrors(e) {
+            const field = e.target;
+            field.classList.remove('error');
+            const errorSpan = field.parentNode.querySelector('.error-message');
+            if (errorSpan) errorSpan.textContent = '';
+        }
+        
+        function getFieldLabel(field) {
+            const label = field.parentNode.querySelector('label');
+            return label ? label.textContent.replace(' *', '') : field.name;
+        }
+        
+        function showMessage(message, type = 'success') {
+            formMessages.innerHTML = `
+                <div class="form-message ${type}">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    ${message}
+                </div>
+            `;
+            formMessages.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Enhanced form submission with real email sending
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Anti-abuse checks
+            const rateLimitError = checkRateLimit();
+            if (rateLimitError) {
+                showMessage(rateLimitError, 'error');
                 return;
             }
-
-            // Simulate form submission
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
+            
+            const interactionError = checkFormInteraction();
+            if (interactionError) {
+                showMessage(interactionError, 'error');
+                return;
+            }
+            
+            // Validate all fields
+            let isFormValid = true;
+            inputs.forEach(input => {
+                if (!validateField({ target: input })) {
+                    isFormValid = false;
+                }
+            });
+            
+            if (!isFormValid) {
+                showMessage('Please correct the errors above and try again.', 'error');
+                return;
+            }
+            
+            // Get form data and check for spam
+            const formData = new FormData(this);
+            const spamError = detectSpam(formData);
+            if (spamError) {
+                showMessage(spamError, 'error');
+                return;
+            }
+            
+            // Check honeypot field
+            if (formData.get('_gotcha')) {
+                showMessage('Please try again.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitButton.disabled = true;
-
-            // Simulate API call
-            setTimeout(() => {
-                alert('Thank you for your message! I will get back to you soon.');
-                this.reset();
-                submitButton.textContent = originalText;
+            formMessages.innerHTML = '';
+            
+            try {
+                // Send to Formspree
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success - store timestamp for rate limiting
+                    localStorage.setItem('lastContactSubmission', Date.now().toString());
+                    
+                    showMessage('Thank you for your message! I will get back to you within 24 hours. Your message has been sent successfully.');
+                    this.reset();
+                    
+                    // Reset character counter
+                    const charCounter = messageTextarea?.parentNode.querySelector('.char-counter');
+                    if (charCounter) {
+                        charCounter.textContent = '0/2000 characters';
+                        charCounter.style.color = '#666';
+                    }
+                    
+                    // Reset timestamp
+                    if (timestampField) {
+                        timestampField.value = Date.now();
+                    }
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Network response was not ok');
+                }
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showMessage(
+                    'Sorry, there was an error sending your message. Please try again or email kelly.archambeault.running@gmail.com directly.',
+                    'error'
+                );
+            } finally {
+                // Reset button
+                submitButton.innerHTML = originalButtonText;
                 submitButton.disabled = false;
-            }, 2000);
+            }
         });
     }
 

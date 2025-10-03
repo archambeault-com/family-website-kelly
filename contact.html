@@ -59,6 +59,80 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Send a Message</h2>
+                    <div id="form-messages"></div>
+                    <form id="contactForm" class="recruitment-form" action="https://formspree.io/f/xqaybjgz" method="POST">
+                        <!-- Honeypot field to catch bots -->
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                        
+                        <!-- Formspree configuration -->
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - Kelly Athletics">
+                        <input type="hidden" name="_next" value="#success">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required maxlength="50">
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required maxlength="100">
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" maxlength="20">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="organization">School/Organization</label>
+                                <input type="text" id="organization" name="organization" maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Position/Title</label>
+                                <input type="text" id="position" name="position" placeholder="e.g., Head Coach, Assistant Coach, Recruiter" maxlength="100">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a topic</option>
+                                <option value="recruitment">Recruitment Inquiry</option>
+                                <option value="visit">Campus Visit</option>
+                                <option value="information">Request Information</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Please share details about your program and any specific questions you have..." maxlength="2000"></textarea>
+                            <span class="error-message"></span>
+                            <small class="char-counter">0/2000 characters</small>
+                        </div>
+                        
+                        <!-- Hidden timestamp for rate limiting -->
+                        <input type="hidden" name="_timestamp" id="timestamp">
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="copy" name="_cc" value="yes">
+                            <label for="copy">Send me a copy of this message</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
                 </div>               
             </div>
         </div>
@@ -128,7 +202,7 @@
                     <i class="fas fa-video"></i>
                     <h3>Video Highlights</h3>
                     <p>Race footage available upon request</p>
-                    <a href="#" class="btn btn-outline">Request Video</a>
+                    <a href="mailto:kelly.archambeault.running@gmail.com?subject=Video Highlights Request&body=Hi Kelly,%0D%0A%0D%0AI would like to request video highlights of your athletic performances.%0D%0A%0D%0APlease include:%0D%0A- Event(s) of interest:%0D%0A- Specific competition footage:%0D%0A- Any other requirements:%0D%0A%0D%0AThank you!" class="btn btn-outline">Request Video</a>
                 </div>
             </div>
         </div>
