@@ -48,16 +48,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Character counter for message field
-        if (messageTextarea) {
-            const charCounter = messageTextarea.parentNode.querySelector('.char-counter');
-            messageTextarea.addEventListener('input', function() {
-                const count = this.value.length;
+        const setupCharacterCounter = () => {
+            const messageTextarea = document.getElementById('message');
+            if (messageTextarea) {
+                const charCounter = messageTextarea.parentNode.querySelector('.char-counter');
+                
                 if (charCounter) {
-                    charCounter.textContent = `${count}/2000 characters`;
-                    charCounter.style.color = count > 1800 ? '#e74c3c' : '#666';
+                    // Initialize the counter
+                    const updateCounter = () => {
+                        const count = messageTextarea.value.length;
+                        charCounter.textContent = `${count}/2000 characters`;
+                        charCounter.style.color = count > 1800 ? '#e74c3c' : '#666';
+                    };
+                    
+                    // Set initial count
+                    updateCounter();
+                    
+                    // Add event listeners for real-time updates
+                    messageTextarea.addEventListener('input', updateCounter);
+                    messageTextarea.addEventListener('keyup', updateCounter);
+                    messageTextarea.addEventListener('paste', () => {
+                        setTimeout(updateCounter, 10); // Delay to allow paste to complete
+                    });
                 }
-            });
-        }
+            }
+        };
+        
+        // Initialize character counter
+        setupCharacterCounter();
         
         // Rate limiting - check localStorage for recent submissions
         function checkRateLimit() {
