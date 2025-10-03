@@ -16,7 +16,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    /* keep .container neutral so sections opt into layout (do NOT set display:flex here) */
 }
 
 /* Navigation */
@@ -25,10 +24,10 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 0;             /* ensure full-bleed fixed bar */
-    right: 0;            /* ensure full-bleed fixed bar */
+    left: 0;
+    right: 0;
     width: 100%;
-    z-index: 1100;       /* above other page content */
+    z-index: 1100;
 }
 
 .nav-container {
@@ -49,17 +48,15 @@ body {
 }
 
 .logo {
-  /* Preferred: let the browser pick a size between 40px and 65px */
-  height: clamp(40px, 4.5vw, 75px);
-  margin-right: 10px;
+    height: clamp(40px, 4.5vw, 75px);
+    margin-right: 10px;
 }
 
-/* Optional fallback / explicit control via media queries */
 @media (min-width: 1200px) {
-  .logo { height: 75px; }
+    .logo { height: 75px; }
 }
 @media (max-width: 480px) {
-  .logo { height: 40px; }
+    .logo { height: 40px; }
 }
 
 .nav-menu {
