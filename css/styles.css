@@ -1245,6 +1245,7 @@ body {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
+    align-self: start;
 }
 
 .contact-info span {
