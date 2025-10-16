@@ -38,6 +38,29 @@ The website is optimized for viewing across all devices:
 
 Deployed using Cloudflare Pages with automatic deployments from the main branch.
 
+## ✉️ Contact Form & Formspree Integration
+
+The contact form on this website allows college recruiters and coaches to send direct inquiries to Kelly. It features real-time validation, anti-abuse protection, and a live character counter for the message field.
+
+### How the Contact Form Works
+- **Form Submission**: When a user submits the form, the data is sent securely to Formspree, a third-party email service.
+- **Validation**: The form checks for required fields, valid email format, and message length before allowing submission.
+- **Spam Protection**: Includes honeypot fields, rate limiting, and content filtering to prevent abuse.
+- **Character Counter**: Displays the number of characters typed in the message field (max 2000).
+- **Success/Error Feedback**: Users receive instant feedback on submission status.
+
+### Formspree Dependency
+- The contact form relies on [Formspree](https://formspree.io/) to deliver messages to Kelly's email address.
+- **Formspree** is a secure, privacy-focused service for handling form submissions without server-side code.
+- No backend or database is required; Formspree acts as the intermediary, forwarding form data to a verified email address.
+- The form is configured with a unique Formspree project ID and requires email verification for activation.
+
+#### Basic Formspree Info
+- **Free Tier**: Limited submissions per month, suitable for personal/recruitment sites.
+- **Setup**: Add a Formspree endpoint to your form's `action` attribute and verify your email.
+- **Security**: Supports spam filtering, CAPTCHA, and encrypted submissions.
+- **Docs**: See [Formspree Documentation](https://formspree.io/docs/) for details.
+
 ## 📁 Project Structure
 
 ```
