@@ -863,6 +863,79 @@ body {
 }
 
 /* Gallery */
+.gallery-links {
+    padding: 40px 0;
+    background-color: white;
+}
+
+.gallery-links .media-links {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-links .media-links h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.gallery-links .season-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Override the global 4-column season-row just for gallery links */
+.gallery-links .season-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Description | Link */
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.gallery-links .season-row.season-header {
+    background-color: #2c3e50;
+    color: #fff;
+    font-weight: 600;
+}
+
+.gallery-links .season-row:not(.season-header) {
+    background-color: #f8f9fa;
+}
+
+.gallery-links .season-row:not(.season-header):hover {
+    background-color: #ecf0f1;
+}
+
+.gallery-links .season-row span:last-child {
+    justify-self: end;
+}
+
+.gallery-links a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.gallery-links a:hover {
+    text-decoration: underline;
+}
+
+/* Stack description and link on narrow screens */
+@media (max-width: 600px) {
+    .gallery-links .media-links {
+        max-width: 100%;
+    }
+    .gallery-links .season-row {
+        grid-template-columns: 1fr;
+    }
+    .gallery-links .season-row span:last-child {
+        justify-self: start;
+    }
+}
 .gallery-filters {
     padding: 40px 0;
     background-color: white;
