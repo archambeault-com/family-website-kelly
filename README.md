@@ -6,7 +6,7 @@ A responsive website showcasing the athletic achievements and academic profile o
 
 This website serves as an athletic portfolio for college recruitment, featuring:
 
-- **Personal Records**: 800m (2:14.33), 1600m (5:08.61), 3200m (11:12.71), 5000m (19:19.30)
+- **Personal Records**: 800m (2:14.33), 1600m (5:06.48), 3200m (11:12.71), 5000m (19:19.30)
 - **Academic Excellence**: 4.2 GPA
 - **Leadership**: Team Captain for Cross Country, Track, and Basketball
 - **State Recognition**: MSHSAA State medalist and qualifier
